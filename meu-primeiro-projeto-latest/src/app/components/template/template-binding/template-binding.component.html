@@ -8,3 +8,9 @@
 <button [disabled]="isDisabled">Button</button>
 <img [src]="srcValue" [alt]="name" [title]="name"/>
 <p [attr.title]="name" [attr.arial-label]="name">Renato Medeiros</p>
+
+<hr/>
+<h2>Class and style binding</h2>
+<p [class.background-red]="age >= 37" [class.background-blue]="age < 37">{{name}}</p>
+
+<p [style.text-decoration]="isTextDecoration">{{age}}</p>

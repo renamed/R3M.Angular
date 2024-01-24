@@ -13,6 +13,7 @@ export class TemplateBindingComponent {
   public condition : string = this.age > 1 ? "Teste" : "Teste 2";
   public isDisabled : boolean = true;
   public srcValue: string = "https://images.prismic.io/blogadevindev/58129589-de25-4254-99a9-507859e01db4_angular-logo.png";
+  public isTextDecoration: string = this.age >= 37 ? 'underline' : 'none';
 
   constructor() {
     setTimeout(() => {
