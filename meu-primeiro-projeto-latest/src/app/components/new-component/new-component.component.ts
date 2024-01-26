@@ -10,4 +10,6 @@ import { TesteComponent } from "../teste/teste.component";
 })
 export class NewComponent  {
 
+    public name = 'New Component';
+
 }
