@@ -14,3 +14,11 @@
 <p [class.background-red]="age >= 37" [class.background-blue]="age < 37">{{name}}</p>
 
 <p [style.text-decoration]="isTextDecoration">{{age}}</p>
+
+<hr/>
+<h2>Event Binding</h2>
+<button (click)="sum()">+</button>
+<button (click)="sub()">-</button>
+<input (keydown.shift.t)="onKeyDown($event)" />
+
+<div style="background-color: red; width: 300px; height: 300px; margin-top: 10px;" (mousemove)="onMouseMove($event)"></div>
