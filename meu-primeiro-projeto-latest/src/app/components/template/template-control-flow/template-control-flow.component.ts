@@ -12,6 +12,8 @@ import { Observable, delay, of } from 'rxjs';
 export class TemplateControlFlowComponent {
   trackFn = (index: number) => index;
 
+  public switchCondition = 'C';
+
   AddNewName(value: string) {
     this.items = [...this.items, { name: value }]
   }
