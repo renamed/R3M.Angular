@@ -4,11 +4,11 @@
 <!-- Nova forma -->
 
 @if(isTrue) {
-    Sim, 1 === 1
-} @else if(1===1) { 
-    1 === 1
+Sim, 1 === 1
+} @else if(1===1) {
+1 === 1
 } @else {
-    Não está correto
+Não está correto
 }
 
 <!-- forma antiga -->
@@ -28,18 +28,18 @@
 
 <b>Nova forma com if</b>
 @if(loadingData$ | async; as data) {
-    <ul>
-        @for(item of data; track item){
-            <li>{{item}}</li>
-        }
-    </ul>
+<ul>
+    @for(item of data; track item){
+    <li>{{item}}</li>
+    }
+</ul>
 } @else {
-    <p>Carregando...</p>
+<p>Carregando...</p>
 }
 
 <b>Nova forma sem if</b>
 @for(item of loadingData$ | async; track item) {
-    <li>{{item}}</li>
+<li>{{item}}</li>
 }
 
 <!-- Forma Antiga -->
@@ -47,7 +47,9 @@
 <ng-container *ngIf="loadingData$ | async as data; else loading">
     <p>{{ data }}</p>
 </ng-container>
-<ng-template #loading><p>Carregando...</p></ng-template>
+<ng-template #loading>
+    <p>Carregando...</p>
+</ng-template>
 
 <b>Forma antiga com track</b>
 <ng-container *ngIf="loadingData$ | async as data; else loading">
@@ -57,30 +59,32 @@
         </ng-container>
     </ul>
 </ng-container>
-<ng-template #loading><p>Carregando...</p></ng-template>
+<ng-template #loading>
+    <p>Carregando...</p>
+</ng-template>
 
 
 <h3>For e seus valores</h3>
 <!-- Nova forma -->
 @for (item of items; track item.name;
-        let i = $index;
-        let c = $count;
-        let f = $first;
-        let l = $last;
-        let e = $even;
-        let o = $odd;
-    ) {
+let i = $index;
+let c = $count;
+let f = $first;
+let l = $last;
+let e = $even;
+let o = $odd;
+) {
 
-    <p><b>{{ item.name }}</b></p>
-    <p>index - {{ i }}</p>
-    <p>count - {{ c }}</p>
-    <p>first - {{ f }}</p>
-    <p>last - {{ l }}</p>
-    <p>even - {{ e }}</p>
-    <p>odd - {{ o }}</p>
+<p><b>{{ item.name }}</b></p>
+<p>index - {{ i }}</p>
+<p>count - {{ c }}</p>
+<p>first - {{ f }}</p>
+<p>last - {{ l }}</p>
+<p>even - {{ e }}</p>
+<p>odd - {{ o }}</p>
 }
 
-<hr/>
+<hr />
 <!-- Forma antiga -->
 <ng-container *ngFor="
         let item of items;
@@ -103,3 +107,28 @@
 
 <input #name type="text">
 <button (click)="AddNewName(name.value)">Add name</button>
+
+<h3>For e empty</h3>
+<!-- Nova Forma -->
+<ul>
+    @for(item of emptyItems; track item.name) {
+    <li>{{ item.name }}</li>
+    } @empty {
+    <li>Não há valores</li>
+    }
+</ul>
+
+<!-- Forma antiga -->
+<ul>
+    <ng-container *ngIf="emptyItems.length === 0; else itensExist">
+        <li>Não há valores</li>
+    </ng-container>
+    <ng-template #itensExist>
+        <ng-container *ngFor="let item of emptyItems">
+            <li>{{item.name}}</li>
+        </ng-container>
+    </ng-template>
+</ul>
+
+<input #name2 type="text">
+<button (click)="AddNewName2(name2.value)">Add name</button>

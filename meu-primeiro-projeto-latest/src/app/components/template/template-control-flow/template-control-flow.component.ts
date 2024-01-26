@@ -15,6 +15,11 @@ export class TemplateControlFlowComponent {
   AddNewName(value: string) {
     this.items = [...this.items, { name: value }]
   }
+
+  AddNewName2(value: string) {
+    this.emptyItems = [...this.emptyItems, { name: value }]
+  }
+
   public isTrue = false;
 
   public loadingData$: Observable<string[]> = of([
@@ -24,8 +29,7 @@ export class TemplateControlFlowComponent {
   ]).pipe(delay(3000));
 
   public items = [ {name : 'Renato Medeiros'} ]
-
-  
+  public emptyItems: Array<{ name: string }> = [];  
 }
 
 
