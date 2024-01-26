@@ -10,6 +10,11 @@ import { Observable, delay, of } from 'rxjs';
   styleUrl: './template-control-flow.component.scss'
 })
 export class TemplateControlFlowComponent {
+  trackFn = (index: number) => index;
+
+  AddNewName(value: string) {
+    this.items = [...this.items, { name: value }]
+  }
   public isTrue = false;
 
   public loadingData$: Observable<string[]> = of([
@@ -18,7 +23,9 @@ export class TemplateControlFlowComponent {
     'item 3'
   ]).pipe(delay(3000));
 
-  trackFn = (index: number) => index;
+  public items = [ {name : 'Renato Medeiros'} ]
+
+  
 }
 
 

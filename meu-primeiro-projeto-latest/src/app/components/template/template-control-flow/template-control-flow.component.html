@@ -58,3 +58,48 @@
     </ul>
 </ng-container>
 <ng-template #loading><p>Carregando...</p></ng-template>
+
+
+<h3>For e seus valores</h3>
+<!-- Nova forma -->
+@for (item of items; track item.name;
+        let i = $index;
+        let c = $count;
+        let f = $first;
+        let l = $last;
+        let e = $even;
+        let o = $odd;
+    ) {
+
+    <p><b>{{ item.name }}</b></p>
+    <p>index - {{ i }}</p>
+    <p>count - {{ c }}</p>
+    <p>first - {{ f }}</p>
+    <p>last - {{ l }}</p>
+    <p>even - {{ e }}</p>
+    <p>odd - {{ o }}</p>
+}
+
+<hr/>
+<!-- Forma antiga -->
+<ng-container *ngFor="
+        let item of items;
+        let i = index;
+        let c = count;
+        let f = first;
+        let l = last;
+        let e = even;
+        let o = odd;
+        trackBy: trackFn;
+    ">
+    <p><b>{{ item.name }}</b></p>
+    <p>index - {{ i }}</p>
+    <p>count - {{ c }}</p>
+    <p>first - {{ f }}</p>
+    <p>last - {{ l }}</p>
+    <p>even - {{ e }}</p>
+    <p>odd - {{ o }}</p>
+</ng-container>
+
+<input #name type="text">
+<button (click)="AddNewName(name.value)">Add name</button>
