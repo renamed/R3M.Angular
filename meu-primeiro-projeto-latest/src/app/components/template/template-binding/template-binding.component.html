@@ -1,5 +1,5 @@
 <h2>Template</h2>
-<h3>Text Interpolation</h3>
+<!-- <h3>Text Interpolation</h3>
 <p>{{ name }} - {{ age }}</p>
 <p>{{ condition }}</p>
 
@@ -28,4 +28,14 @@
 <h3>Two way binding</h3>
 <input [(ngModel)]="name" />
 
-{{name}}
+{{name}} -->
+
+<hr/>
+<h3>Diretiva de atributo</h3>
+<div [ngClass]="{ 'background-red': age < 30, 'background-blue' : age >= 30 }">Classes condicionais.</div>
+
+<div [ngStyle]="{
+        color: age > 35 ? 'green' : 'red',
+        'font-size': age > 35 ? '10px' : '20px'
+    }"
+>Estilo dinâmico.</div>
