@@ -179,16 +179,29 @@
 <p>Loading failed!</p>
 }
 
-<hr/>
+<hr />
 @defer {
-    <app-new-component />
-    } @placeholder (minimum 5s) {
-    <p>Aguardando 5 segundos</p>
-    } @loading {
-    <p>Loading...</p>
-    } @error {
-    <p>Loading failed!</p>
-    }
+<app-new-component />
+} @placeholder (minimum 5s) {
+<p>Aguardando 5 segundos</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<!-- after - especifica que o indicador de carregamento só deve ser exibido se o carregamento demorar mais de 150 ms. 
+minimum - existe para evitar oscilações rápidas do conteúdo do espaço reservado  -->
+<hr />
+@defer {
+<app-new-component />
+} @placeholder {
+<p>Aguardando 5 segundos</p>
+} @loading(after 150ms; minimum 2s) {
+<p>after 150ms; minimum 2s</p>
+} @error {
+<p>Loading failed!</p>
+}
 
 <hr />
 <!-- Carrega quando chega na posição física desse elemento -->
