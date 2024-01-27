@@ -146,6 +146,40 @@
 }
 
 <hr />
+@defer(when isTrue) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<button (click)="isTrue2 = true">Add True</button>
+@defer(when isTrue2) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+@defer(when loadingData$ | async) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
 <!-- Carrega quando chega na posição física desse elemento -->
 @defer(on viewport) {
 <app-new-component />
