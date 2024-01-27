@@ -1,11 +1,158 @@
 <h2>Deferrable Views</h2>
 
+<hr />
 @defer {
-    <app-new-component />
+<app-new-component />
 } @placeholder {
-    <p>Mostrar antes de carregar algo!</p>
+<p>Mostrar antes de carregar algo!</p>
 } @loading {
-    <p>Loading...</p>
+<p>Loading...</p>
 } @error {
-    <p>Loading failed!</p>
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega tudo e depois carrega isso. Valor default -->
+@defer(on idle) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega depois de 3s, 1000ms etc -->
+@defer(on timer(5s)) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega quando uma interação acontece -->
+@defer(on interaction) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega quando uma interação acontece (nesse caso clique no botão)-->
+<button #trigger>Clica eu</button>
+@defer(on interaction(trigger)) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega quando uma interação acontece (nesse caso clique na mensagem antes de carregar algo)-->
+@defer(on interaction(trigger2)) {
+<app-new-component />
+} @placeholder {
+<p #trigger2>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega quando passo o mouse em cima -->
+@defer(on hover) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Parecido com o idle, mas o idle espera o navegador parar de carregar tudo e ficar "idle", esse espera acabar de carregar tudo -->
+@defer(on immediate) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Prefetch: Pode carregar direto, mas só mostra o componente depois de uma interação -->
+@defer(on interaction; prefetch on idle) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<h3 #trigger3>Clica eu</h3>
+@defer(on interaction; prefetch on interaction(trigger3)) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<h3 #trigger4>Clica eu</h3>
+@defer(on interaction(trigger5); prefetch on interaction(trigger4)) {
+<app-new-component />
+} @placeholder {
+<p #trigger5>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<h3 #trigger6>Clica eu</h3>
+<!-- as condições são sempre or -->
+@defer(on timer(5s); on interaction(trigger6); on hover) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
+}
+
+<hr />
+<!-- Carrega quando chega na posição física desse elemento -->
+@defer(on viewport) {
+<app-new-component />
+} @placeholder {
+<p>Mostrar antes de carregar algo!</p>
+} @loading {
+<p>Loading...</p>
+} @error {
+<p>Loading failed!</p>
 }

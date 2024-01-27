@@ -9,5 +9,5 @@ import { NewComponent } from "../../new-component/new-component.component";
     imports: [NewComponent]
 })
 export class TemplateDeferrableViewsComponent {
-
+  public mostrar = false;
 }
