@@ -179,6 +179,17 @@
 <p>Loading failed!</p>
 }
 
+<hr/>
+@defer {
+    <app-new-component />
+    } @placeholder (minimum 5s) {
+    <p>Aguardando 5 segundos</p>
+    } @loading {
+    <p>Loading...</p>
+    } @error {
+    <p>Loading failed!</p>
+    }
+
 <hr />
 <!-- Carrega quando chega na posição física desse elemento -->
 @defer(on viewport) {
